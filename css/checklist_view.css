@@ -1,0 +1,31 @@
+.contenedor{
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 0;
+    margin-bottom: 18px;
+    float: left;
+    width: 100%;
+}
+
+.contenedor .titulo{
+    background-color: #2644a0;
+    color: #ffffff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 17px;
+    padding: 6px 15px;
+
+}
+
+.contenedor .cuerpo{
+
+    float: left;
+    padding-top: 15px;
+
+}
+.contenedor .cuerpo .thumbnail{
+    height: 250px;
+}
+.contenedor .cuerpo img{
+    max-height: 240px;
+}

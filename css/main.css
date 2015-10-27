@@ -1,0 +1,76 @@
+#page{
+    background-color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+body{
+
+}
+
+#menu{
+    width: 100%;
+    background-color: #222;
+    border-color: #080808;
+
+}
+
+
+.btn-agregar{
+    float: right;
+    margin-top: -5px;
+    padding: 3px 20px !important;
+}
+
+.db{
+    min-height: 200px;
+max-height: 200px;
+
+}
+
+.db-right{
+    font-size: 40px;
+    position: absolute;
+    right: -7px;
+    text-align: center;
+    top: 85px;
+    display: none;
+    cursor:pointer;
+}
+
+.db-left{
+    font-size: 40px;
+    position: absolute;
+    left: -7px;
+    text-align: center;
+    top: 85px;
+    display: none;
+    cursor: pointer;
+}
+
+.db-right i,.db-left i{
+    background: #fff;
+}
+
+.grafic-title{
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+.grafic-content{
+    background: #ddd none repeat scroll 0 0;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 15px;
+}
+
+.logo{
+    height: 52px;
+    margin-left: inherit;
+    margin-right: -10px;
+    margin-top: -16px;
+    width: 150px;
+}

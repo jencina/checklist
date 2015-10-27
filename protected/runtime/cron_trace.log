@@ -1,0 +1,38 @@
+2015/06/16 11:46:42 [trace] [system.CModule] Loading "log" application component
+2015/06/16 11:46:42 [trace] [system.db.ar.CActiveRecord] UsuarioTecnico.findAll()
+2015/06/16 11:46:42 [trace] [system.CModule] Loading "db" application component
+2015/06/16 11:46:42 [trace] [system.db.CDbConnection] Opening DB connection
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `usuario_tecnico`
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `usuario_tecnico`
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `usuario_tecnico` `t` WHERE fecha_termino between :fecha and :fecha1
+2015/06/16 11:46:42 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.usuario
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `usuario`
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `usuario`
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT `usuario`.`id` AS `t1_c0`, `usuario`.`nombre` AS `t1_c1`, `usuario`.`apellido` AS `t1_c2`, `usuario`.`empresa_id` AS `t1_c3`, `usuario`.`usuario` AS `t1_c4`, `usuario`.`password` AS `t1_c5`, `usuario`.`email` AS `t1_c6`, `usuario`.`tipo_usuario_id` AS `t1_c7`, `usuario`.`activo` AS `t1_c8` FROM `usuario` `usuario`  WHERE (`usuario`.`id`=:ypl0)
+2015/06/16 11:46:42 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.tipoContrato
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `tipo_contrato`
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `tipo_contrato`
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT `tipoContrato`.`id` AS `t1_c0`, `tipoContrato`.`nombre` AS `t1_c1` FROM `tipo_contrato` `tipoContrato`  WHERE (`tipoContrato`.`id`=:ypl0)
+2015/06/16 11:46:42 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.usuario
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT `usuario`.`id` AS `t1_c0`, `usuario`.`nombre` AS `t1_c1`, `usuario`.`apellido` AS `t1_c2`, `usuario`.`empresa_id` AS `t1_c3`, `usuario`.`usuario` AS `t1_c4`, `usuario`.`password` AS `t1_c5`, `usuario`.`email` AS `t1_c6`, `usuario`.`tipo_usuario_id` AS `t1_c7`, `usuario`.`activo` AS `t1_c8` FROM `usuario` `usuario`  WHERE (`usuario`.`id`=:ypl0)
+2015/06/16 11:46:42 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.tipoContrato
+2015/06/16 11:46:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT `tipoContrato`.`id` AS `t1_c0`, `tipoContrato`.`nombre` AS `t1_c1` FROM `tipo_contrato` `tipoContrato`  WHERE (`tipoContrato`.`id`=:ypl0)
+2015/06/16 11:48:01 [trace] [system.CModule] Loading "log" application component
+2015/06/16 11:48:01 [trace] [system.db.ar.CActiveRecord] UsuarioTecnico.findAll()
+2015/06/16 11:48:01 [trace] [system.CModule] Loading "db" application component
+2015/06/16 11:48:01 [trace] [system.db.CDbConnection] Opening DB connection
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `usuario_tecnico`
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `usuario_tecnico`
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `usuario_tecnico` `t` WHERE fecha_termino between :fecha and :fecha1
+2015/06/16 11:48:01 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.usuario
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `usuario`
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `usuario`
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT `usuario`.`id` AS `t1_c0`, `usuario`.`nombre` AS `t1_c1`, `usuario`.`apellido` AS `t1_c2`, `usuario`.`empresa_id` AS `t1_c3`, `usuario`.`usuario` AS `t1_c4`, `usuario`.`password` AS `t1_c5`, `usuario`.`email` AS `t1_c6`, `usuario`.`tipo_usuario_id` AS `t1_c7`, `usuario`.`activo` AS `t1_c8` FROM `usuario` `usuario`  WHERE (`usuario`.`id`=:ypl0)
+2015/06/16 11:48:01 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.tipoContrato
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `tipo_contrato`
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `tipo_contrato`
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT `tipoContrato`.`id` AS `t1_c0`, `tipoContrato`.`nombre` AS `t1_c1` FROM `tipo_contrato` `tipoContrato`  WHERE (`tipoContrato`.`id`=:ypl0)
+2015/06/16 11:48:01 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.usuario
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT `usuario`.`id` AS `t1_c0`, `usuario`.`nombre` AS `t1_c1`, `usuario`.`apellido` AS `t1_c2`, `usuario`.`empresa_id` AS `t1_c3`, `usuario`.`usuario` AS `t1_c4`, `usuario`.`password` AS `t1_c5`, `usuario`.`email` AS `t1_c6`, `usuario`.`tipo_usuario_id` AS `t1_c7`, `usuario`.`activo` AS `t1_c8` FROM `usuario` `usuario`  WHERE (`usuario`.`id`=:ypl0)
+2015/06/16 11:48:01 [trace] [system.db.ar.CActiveRecord] lazy loading UsuarioTecnico.tipoContrato
+2015/06/16 11:48:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT `tipoContrato`.`id` AS `t1_c0`, `tipoContrato`.`nombre` AS `t1_c1` FROM `tipo_contrato` `tipoContrato`  WHERE (`tipoContrato`.`id`=:ypl0)
