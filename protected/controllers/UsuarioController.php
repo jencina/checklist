@@ -165,7 +165,7 @@ class UsuarioController extends Controller
 
                         $tecnico->usuario_id = $model->id;
                         $tecnico->insert();
-                        
+
                         if(!empty($tecnico->contrato_adjunto)):
                             $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
                         endif;
@@ -179,7 +179,7 @@ class UsuarioController extends Controller
 
                             $mensaje    = $this->render('emailregistro',array('usuario'=>$model->usuario,'password'=>$model->password));
 
-                            mail($model->mail,$titulo,$mensaje,$cabeceras);
+                            mail($model->email,$titulo,$mensaje,$cabeceras);
 
                         endif;
 

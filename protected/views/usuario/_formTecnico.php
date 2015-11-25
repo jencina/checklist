@@ -299,6 +299,10 @@ unset($form);
 
 <script>
 
+   $('#usuario-form').submit(function(){
+      $('btn').attr('disabled','disabled');
+   });
+
     $('#Usuario_tipo_usuario_id').change(function(){
 
 

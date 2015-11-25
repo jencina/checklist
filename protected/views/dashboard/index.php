@@ -132,6 +132,8 @@ $cs->registerScriptFile($baseUrl.'/protected/extensions/booster/assets/highchart
 
     function calendar(){
 
+        $('#graficos').html('');
+
         $('#desde').attr('disabled',false);
         $('#hasta').attr('disabled',false);
 

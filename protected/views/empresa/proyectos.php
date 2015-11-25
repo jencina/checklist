@@ -22,7 +22,8 @@ $this->widget(
 switch(Yii::app()->user->tipo_usuario){
 
     case 'admin':
-        $template = '{chart}  {anadir}  {conf}  {view}  {update}  {delete}';
+        //$template = '{chart}  {anadir}  {conf}  {view}  {update}  {delete}';
+        $template = '{anadir}  {view}  {update}  {delete}';
         break;
     case 'tecnico':
         $template = '{anadir} {view}';
