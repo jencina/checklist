@@ -215,7 +215,7 @@ class ProyectoController extends Controller
 
     public function listUsuarios(){
         $listUsuarios= array();
-        foreach(Usuario::model()->findAll() as $index=>$user){
+        foreach(Usuario::model()->findAllByAttributes(array('empresa_id'=>Yii::app()->user->empresa)) as $index=>$user){
 
             $tipo   = $user->tipoUsuario->nombre;
             $nombre = $user->nombre.' '.$user->apellido;
@@ -235,7 +235,7 @@ class ProyectoController extends Controller
 
     public function listTareas(){
         $listTareas= array();
-        foreach(Tarea::model()->findAll() as $index=>$tarea){
+        foreach(Tarea::model()->findAllByAttributes(array('empresa_id'=>Yii::app()->user->empresa)) as $index=>$tarea){
 
             $tiempo   = $tarea->tiempo;
             $precio   = $tarea->precio;

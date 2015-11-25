@@ -29,13 +29,14 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-        if(Usuario::model()->findByPk(Yii::app()->user->id)->tipo_usuario_id == 1){
+        $tipo = Usuario::model()->findByPk(Yii::app()->user->id)->tipoUsuario->nombre;
+        if( $tipo == 'admin' || $tipo == 'super_admin'){
 
             $this->redirect(array('usuario/admin'));
 
         }else{
 
-            $this->redirect(array('checklist/admin'));
+            $this->redirect(array('empresa/admin'));
 
         }
 

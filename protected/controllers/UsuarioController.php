@@ -143,13 +143,14 @@ class UsuarioController extends Controller
             }
 
             if(isset($_POST['UsuarioTecnico'])){
-                $rnd = rand(0,9999);
 
                 $tecnico->attributes = $_POST['UsuarioTecnico'];
 
-                $uploadedFile=CUploadedFile::getInstance($tecnico,'contrato_adjunto');
-                $fileName = "{$uploadedFile}";  // random number + file name
-                $tecnico->contrato_adjunto = $fileName;
+                if(!empty($tecnico->contrato_adjunto)):
+                    $uploadedFile= CUploadedFile::getInstance($tecnico,'contrato_adjunto');
+                    $fileName    = "{$uploadedFile}";  // random number + file name
+                    $tecnico->contrato_adjunto = $fileName;
+                endif;
 
 
                 $valid=$model->validate();
@@ -164,18 +165,23 @@ class UsuarioController extends Controller
 
                         $tecnico->usuario_id = $model->id;
                         $tecnico->insert();
-                        $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
+                        
+                        if(!empty($tecnico->contrato_adjunto)):
+                            $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
+                        endif;
 
+                        if($model->tipoUsuario->nombre == 'tecnico'):
+                            $titulo     = 'Registro - Usuario';
 
-                        $titulo     = 'Registro - Usuario';
+                            $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+                            $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                            $cabeceras .= 'From: SmartCage <admin@smartcage.com>' . "\r\n";
 
-                        $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
-                        $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                        $cabeceras .= 'From: SmartCage <admin@smartcage.com>' . "\r\n";
+                            $mensaje    = $this->render('emailregistro',array('usuario'=>$model->usuario,'password'=>$model->password));
 
-                        $mensaje    = $this->render('emailregistro',array('usuario'=>$model->usuario,'password'=>$model->password));
+                            mail($model->mail,$titulo,$mensaje,$cabeceras);
 
-                        mail($model->mail,$titulo,$mensaje,$cabeceras);
+                        endif;
 
                         $this->redirect(array('usuario/admin'));
                     }

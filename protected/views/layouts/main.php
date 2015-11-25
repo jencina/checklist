@@ -18,10 +18,12 @@
 
     $logo = '';
 
-    if(!empty(Empresa::model()->findByPk(Yii::app()->user->empresa)->logo)){
+    if(Yii::app()->user->empresa == 'admin'){
+       $logo = 'jCAGE';
+    }else if(!empty(Empresa::model()->findByPk(Yii::app()->user->empresa)->logo) && Empresa::model()->findByPk(Yii::app()->user->empresa)->logo_tipo_id == 1){
        $logo = '<img src="'.Yii::app()->request->baseUrl.'/images/'.Empresa::model()->findByPk(Yii::app()->user->empresa)->logo.'" class="logo"/>';
     }else{
-       $logo = '23kyCorp';
+       $logo = Empresa::model()->findByPk(Yii::app()->user->empresa)->logo;
     }
     $this->widget(
         'booster.widgets.TbNavbar',

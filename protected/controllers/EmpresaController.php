@@ -122,13 +122,18 @@ class EmpresaController extends Controller
 		if(isset($_POST['Empresa']))
 		{
 			$model->attributes=$_POST['Empresa'];
+
             if(Yii::app()->user->tipo_usuario == 'super_admin'){
 
                 $model->tipo_empresa_id = Yii::app()->params['empresa_admin'];
+                $model->logo_tipo_id = $_POST['Empresa']['logo_tipo_id'];
 
-                $uploadedFile = CUploadedFile::getInstance($model,'logo');
-                $fileName     = "empresa_logo_"."{$uploadedFile}";  // random number + file name
-                $model->logo  = $fileName;
+                if($model->logo_tipo_id == 1){
+
+                    $uploadedFile = CUploadedFile::getInstance($model,'logo');
+                    $fileName     = "empresa_logo_"."{$uploadedFile}";  // random number + file name
+                    $model->logo  = $fileName;
+                }
 
             }else{
                 $model->tipo_empresa_id = Yii::app()->params['empresa_cliente'];
@@ -136,13 +141,16 @@ class EmpresaController extends Controller
             }
 
 			if($model->save()){
+
                 if(Yii::app()->user->tipo_usuario == 'super_admin') {
-                    if(!empty($model->logo)){
+                    if($model->logo_tipo_id == 1){
                         $uploadedFile->saveAs(Yii::app()->basePath . '/../images/' . $fileName);
                     }
                 }
+
                 $this->redirect(array('admin'));
             }
+
         }
 
 

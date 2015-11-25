@@ -40,7 +40,8 @@ class Usuario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido, usuario, password, email', 'required'),
+			array('nombre, apellido, email', 'required'),
+            array('usuario,password','validUser'),
 			array('tipo_usuario_id, activo, empresa_id, empresa_id_cliente', 'numerical', 'integerOnly'=>true),
 			array('nombre, apellido, usuario, password, email', 'length', 'max'=>45),
             array('email','email'),
@@ -51,6 +52,18 @@ class Usuario extends CActiveRecord
 		);
 	}
 
+
+    public function validUser($attribute, $params){
+
+
+        if($this->tipoUsuario->nombre != 'residente'){
+            if(empty($this->$attribute)){
+                $this->addError($attribute, $attribute.' no puede ser nulo');
+            }
+
+        }
+
+    }
 	/**
 	 * @return array relational rules.
 	 */

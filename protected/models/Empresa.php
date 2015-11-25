@@ -17,6 +17,7 @@
  * @property string $telefono_administracion
  * @property string $pais_prestacion_servicios
  * @property string $logo
+ * @property string $logo_tipo_id
  * @property integer $tipo_empresa_id
  * @property integer $empresa_id
  *
@@ -29,6 +30,8 @@
  */
 class Empresa extends CActiveRecord
 {
+
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -49,9 +52,10 @@ class Empresa extends CActiveRecord
 			array('tipo_empresa_id, empresa_id', 'numerical', 'integerOnly'=>true),
 			array('nombre, razon_social, rut, direccion_comercial, contacto_facturacion, telefono_fijo, telefono_celular, email_contacto, contacto_administracion, telefono_administracion, pais_prestacion_servicios, logo', 'length', 'max'=>45),
             array('email_contacto','email'),
+            array('nombre','unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre, razon_social, rut, direccion_comercial, contacto_facturacion, telefono_fijo, telefono_celular, email_contacto, contacto_administracion, telefono_administracion, pais_prestacion_servicios, logo, tipo_empresa_id, empresa_id', 'safe', 'on'=>'search'),
+			array('id, nombre, razon_social, rut, direccion_comercial, contacto_facturacion, telefono_fijo, telefono_celular, email_contacto, contacto_administracion, telefono_administracion, pais_prestacion_servicios, logo, tipo_empresa_id, empresa_id, logo_tipo_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +70,7 @@ class Empresa extends CActiveRecord
 			'empresa' => array(self::BELONGS_TO, 'Empresa', 'empresa_id'),
 			'empresas' => array(self::HAS_MANY, 'Empresa', 'empresa_id'),
 			'tipoEmpresa' => array(self::BELONGS_TO, 'TipoEmpresa', 'tipo_empresa_id'),
+            'tipoLogo' => array(self::BELONGS_TO, 'LogoTipo', 'logo_tipo_id'),
 			'proyectos' => array(self::HAS_MANY, 'Proyecto', 'empresa_id'),
 			'usuarios' => array(self::HAS_MANY, 'Usuario', 'empresa_id'),
 		);
@@ -90,6 +95,7 @@ class Empresa extends CActiveRecord
 			'telefono_administracion' => 'Telefono Administracion',
 			'pais_prestacion_servicios' => 'Pais Prestacion Servicios',
 			'logo' => 'Logo',
+            'logo_tipo_id'=>'Tipo Logo',
 			'tipo_empresa_id' => 'Tipo Empresa',
 			'empresa_id' => 'Empresa',
 		);

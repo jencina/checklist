@@ -37,7 +37,7 @@ class UsuarioTecnico extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rut, fecha_inicio, fecha_termino, tipo_contrato_id, telefono_fijo, telefono_celular, direccion, contrato_adjunto', 'required'),
+			array('rut, fecha_inicio, fecha_termino, tipo_contrato_id, telefono_fijo, telefono_celular, direccion', 'required'),
 			array('tipo_contrato_id, usuario_id', 'numerical', 'integerOnly'=>true),
 			array('rut, telefono_fijo, telefono_celular, direccion, contrato_adjunto', 'length', 'max'=>45),
             array('fecha_inicio','validFecha'),

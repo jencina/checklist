@@ -1,5 +1,9 @@
 <?php
 $usuario = Usuario::model()->findByPk(Yii::app()->user->id)->tipoUsuario->nombre;
+$tipoUsuario = '';
+if(isset($model->tipoUsuario->nombre)){
+   $tipoUsuario =  $model->tipoUsuario->nombre;
+}
 
 $form = $this->beginWidget(
     'booster.widgets.TbActiveForm',
@@ -33,25 +37,28 @@ $form = $this->beginWidget(
 
     </div>
 
-    <div class="col-md-12">
+    <?php
+     if($tipoUsuario != 'residente'): ?>
+        <div class="col-md-12">
 
-        <div class="col-md-6">
-            <?php echo $form->textFieldGroup($model, 'usuario',
-                array(
-                    'wrapperHtmlOptions' => array('class' => 'col-sm-5'),
-                )
-            ); ?>
+            <div class="col-md-6">
+                <?php echo $form->textFieldGroup($model, 'usuario',
+                    array(
+                        'wrapperHtmlOptions' => array('class' => 'col-sm-5'),
+                    )
+                ); ?>
+            </div>
+
+            <div class="col-md-6">
+                <?php echo $form->textFieldGroup($model, 'password',
+                    array(
+                        'wrapperHtmlOptions' => array('class' => 'col-sm-5'),
+                    )
+                ); ?>
+            </div>
+
         </div>
-
-        <div class="col-md-6">
-            <?php echo $form->textFieldGroup($model, 'password',
-                array(
-                    'wrapperHtmlOptions' => array('class' => 'col-sm-5'),
-                )
-            ); ?>
-        </div>
-
-    </div>
+    <?php endif; ?>
 
 
     <div class="col-md-12">
@@ -83,8 +90,33 @@ $form = $this->beginWidget(
     </div>
 
     <?php
-    if(isset($model->tipoUsuario->nombre)){
-    if($model->tipoUsuario->nombre != 'super_admin' && Usuario::model()->findByPk(Yii::app()->user->id)->tipoUsuario->nombre == 'super_admin'){ ?>
+
+
+    if($tipoUsuario == 'admin'){ ?>
+        <div class="col-md-6">
+            <?php
+
+
+            $criteria=new CDbCriteria;
+            $criteria->condition = "tipo_empresa_id = :value";
+            $criteria->params= array(":value" => Yii::app()->params['empresa_admin']);
+
+            echo $form->dropDownListGroup(
+                $model,
+                'empresa_id',
+                array(
+                    'wrapperHtmlOptions' => array(
+                        'class' => 'col-sm-5',
+                    ),
+                    'widgetOptions' => array(
+                        'data' => CHtml::listData(Empresa::model()->findAll($criteria),'id', 'nombre'),
+                        'htmlOptions'=>array('prompt'=>'Seleccione Empresa')
+                    )
+                )
+            );  ?>
+        </div>
+
+    <?php }elseif($tipoUsuario != 'super_admin' && $usuario == 'super_admin'){ ?>
     <div class="col-md-6">
         <?php echo $form->dropDownListGroup(
             $model,
@@ -100,7 +132,7 @@ $form = $this->beginWidget(
             )
         );  ?>
     </div>
-    <?php }elseif($model->tipoUsuario->nombre == 'cliente'){ ?>
+    <?php }elseif($tipoUsuario == 'cliente'){ ?>
         <div class="col-md-6">
             <?php echo $form->dropDownListGroup(
                 $model,
@@ -116,13 +148,10 @@ $form = $this->beginWidget(
                 )
             );  ?>
         </div>
-    <?php
-       }
-    }
-    ?>
+    <?php } ?>
 
     <div id="user-tecnico">
-        <?php if($model->tipo_usuario_id == 3){ ?>
+        <?php if($tipoUsuario == 'tecnico' || $tipoUsuario == 'residente'){ ?>
 
         <div class="col-md-12">
 
@@ -238,7 +267,7 @@ $form = $this->beginWidget(
 
          </div>
 
-         <?php if(isset($tecnico->contrato_adjunto)){?>
+         <?php if(!empty($tecnico->contrato_adjunto)){?>
          <div class="col-md-12">
              <div class="col-md-6">
                <?php echo $tecnico->contrato_adjunto.CHtml::link('Descargar',Yii::app()->request->baseUrl.'/images/'.$tecnico->contrato_adjunto,array('target'=>'_blanc','class'=>'btn btn-primary','style'=>'width: 48%;'));; ?>
@@ -272,7 +301,6 @@ unset($form);
 
     $('#Usuario_tipo_usuario_id').change(function(){
 
-      //  if($(this).val() == 3 || $(this).val() == 2){
 
             var data=$("#usuario-form").serialize();
 
@@ -288,9 +316,6 @@ unset($form);
 
             return false;
 
-        /*  }else{
-            $('#user-tecnico').html('');
-        }*/
 
     });
 
