@@ -37,10 +37,10 @@ class UsuarioTecnico extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rut, fecha_inicio, fecha_termino, tipo_contrato_id, telefono_fijo, telefono_celular, direccion', 'required'),
+			array('rut, fecha_inicio, tipo_contrato_id, telefono_fijo, telefono_celular, direccion', 'required'),
+            array('fecha_termino','validFechaReq'),
 			array('tipo_contrato_id, usuario_id', 'numerical', 'integerOnly'=>true),
 			array('rut, telefono_fijo, telefono_celular, contrato_adjunto', 'length', 'max'=>45),
-            
             array('direccion', 'length', 'max'=>100),
             array('fecha_inicio','validFecha'),
             array('rut','rut'),
@@ -50,10 +50,21 @@ class UsuarioTecnico extends CActiveRecord
 		);
 	}
 
+    public function validFechaReq($attribute, $params){
+
+        if($this->tipoContrato->nombre != 'indefinido'){
+            if($this->fecha_termino == ''){
+                $this->addError($attribute, 'fecha de termino no puede ser nulo');
+            }
+        }
+    }
+
     public function validFecha($attribute, $params){
 
-        if($this->fecha_inicio > $this->fecha_termino){
-            $this->addError($attribute, 'fecha de inicio no debe ser mayor a la de termino');
+        if($this->tipoContrato->nombre != 'indefinido'){
+            if($this->fecha_inicio > $this->fecha_termino){
+                $this->addError($attribute, 'fecha de inicio no debe ser mayor a la de termino');
+            }
         }
     }
 

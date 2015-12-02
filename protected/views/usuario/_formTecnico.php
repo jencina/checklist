@@ -1,9 +1,17 @@
 <?php
 $usuario = Usuario::model()->findByPk(Yii::app()->user->id)->tipoUsuario->nombre;
-$tipoUsuario = '';
+$tipoUsuario  = '';
+$tipoContrato = '';
+
 if(isset($model->tipoUsuario->nombre)){
    $tipoUsuario =  $model->tipoUsuario->nombre;
 }
+
+if(isset($tecnico->tipoContrato->nombre)){
+    $tipoContrato =  $tecnico->tipoContrato->nombre;
+}
+
+
 
 $form = $this->beginWidget(
     'booster.widgets.TbActiveForm',
@@ -187,6 +195,8 @@ $form = $this->beginWidget(
 
         <div class="col-md-12">
 
+            <?php  if($tipoContrato != 'indefinido'){ ?>
+
             <div class="col-md-6">
                 <?php  echo $form->datePickerGroup(
                     $tecnico,
@@ -207,6 +217,8 @@ $form = $this->beginWidget(
                     )
                 ); ?>
             </div>
+
+            <?php } ?>
 
             <div class="col-md-6">
                 <?php echo $form->textFieldGroup($tecnico, 'telefono_fijo',
@@ -302,6 +314,18 @@ unset($form);
    $('#usuario-form').submit(function(){
       $('btn').attr('disabled','disabled');
    });
+
+   $('#UsuarioTecnico_tipo_contrato_id').change(function(){
+
+            var tipo = $(this).val();
+
+            if(tipo == 3){
+                $('#UsuarioTecnico_fecha_termino').parents('.col-md-6').hide('slow');
+            }else{
+                $('#UsuarioTecnico_fecha_termino').parents('.col-md-6').show('slow');
+            }
+    });
+
 
     $('#Usuario_tipo_usuario_id').change(function(){
 
