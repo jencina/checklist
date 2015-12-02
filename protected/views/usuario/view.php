@@ -26,7 +26,10 @@ $this->widget(
             'id',
             'nombre',
             'apellido',
-            'empresa_id',
+            array(
+                'label' => 'Empresa',
+                'value' => $model->empresa->nombre
+            ),
             'usuario',
             'password',
             'email',

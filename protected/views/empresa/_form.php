@@ -122,6 +122,7 @@
             ); ?>
         </div>
 
+    <?php if(Yii::app()->user->tipo_usuario == 'super_admin'){?>
         <div class="col-md-6">
             <?php
 
@@ -139,6 +140,7 @@
                 )
             );  ?>
         </div>
+    <?php } ?>
     </div>
 
     <?php if(Yii::app()->user->tipo_usuario == 'super_admin'){?>

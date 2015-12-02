@@ -18,7 +18,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('empresa_id')); ?>:</b>
-	<?php echo CHtml::encode($data->empresa_id); ?>
+	<?php echo CHtml::encode($data->empresa->nombre); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('usuario')); ?>:</b>
