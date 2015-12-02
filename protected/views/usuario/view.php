@@ -28,7 +28,7 @@ $this->widget(
             'apellido',
             array(
                 'label' => 'Empresa',
-                'value' => $model->empresa->nombre
+                'value' => (isset($model->empresa->nombre))?$model->empresa->nombre:''
             ),
             'usuario',
             'password',
