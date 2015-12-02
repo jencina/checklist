@@ -26,7 +26,7 @@ $this->widget(
     array(
         'type' => 'striped',
         'dataProvider' => $model,
-        'template' => "{items}",
+        'template' => "{items} {pager}",
         'columns'=>array(
             'id',
             'nombre',
