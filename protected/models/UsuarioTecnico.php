@@ -39,7 +39,8 @@ class UsuarioTecnico extends CActiveRecord
 		return array(
 			array('rut, fecha_inicio, fecha_termino, tipo_contrato_id, telefono_fijo, telefono_celular, direccion', 'required'),
 			array('tipo_contrato_id, usuario_id', 'numerical', 'integerOnly'=>true),
-			array('rut, telefono_fijo, telefono_celular, direccion, contrato_adjunto', 'length', 'max'=>45),
+			array('rut, telefono_fijo, telefono_celular, contrato_adjunto', 'length', 'max'=>45),
+            array('direccion', 'length', 'max'=>100),
             array('fecha_inicio','validFecha'),
             array('rut','rut'),
 			// The following rule is used by search().
