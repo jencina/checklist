@@ -159,7 +159,7 @@ $form = $this->beginWidget(
     <?php } ?>
 
     <div id="user-tecnico">
-        <?php if($tipoUsuario == 'tecnico' || $tipoUsuario == 'residente'){ ?>
+        <?php if($tipoUsuario == 'tecnico' || $tipoUsuario == 'reemplazo' || $tipoUsuario == 'residente'){ ?>
 
         <div class="col-md-12">
 

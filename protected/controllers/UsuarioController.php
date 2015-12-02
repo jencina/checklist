@@ -170,7 +170,7 @@ class UsuarioController extends Controller
                             $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
                         endif;
 
-                        if($model->tipoUsuario->nombre == 'tecnico'):
+                        if($model->tipoUsuario->nombre == 'tecnico' || $model->tipoUsuario->nombre == 'reemplazo'):
                             $titulo     = 'Registro - Usuario';
 
                             $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
