@@ -422,8 +422,9 @@ class ChecklistController extends Controller
         $folder=Yii::app()->basePath. "/../images";
         $file = $folder.'/checklist/images/checklist_'.$model->id;
 
-        chmod($file, 0777);
+
         mkdir($file, 0777 ,true);
+        chmod($file, 0777);
 
 
 
