@@ -114,10 +114,16 @@ $this->widget(
             type : 'post',
             cache: false ,
             data : { id: id },
+            beforeSend:function(){
+                $('.page-header h1 a').attr('disabled',true);
+                $('.page-header h1 a').after('<span style="font-size: 15px;margin-left: 10px">Generando...</span>');
+            },
             success: function(data){
                 if(data.status == 'success'){
 
                     $.fn.yiiGridView.update('checklist-grid');
+                    $('.page-header h1 a').attr('disabled',false);
+                    $('.page-header h1 span').remove();
 
                 }
             }

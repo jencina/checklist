@@ -3,7 +3,7 @@
 $this->widget(
     'booster.widgets.TbBreadcrumbs',
     array(
-        'homeLink' => CHtml::link(Yii::t('zii', 'Clientes'), array('cliente/admin')),
+        'homeLink' => CHtml::link(Yii::t('zii', 'Empresa'), array('empresa/admin')),
         'links' => array('Detalle'),
     )
 );
@@ -11,7 +11,7 @@ $this->widget(
 ?>
 
 <div class="page-header">
-    <h1>Cliente <small>Detalle #<?php echo $model->id; ?></small></h1>
+    <h1>Empresa <small>Detalle #<?php echo $model->id; ?></small></h1>
 </div>
 
 

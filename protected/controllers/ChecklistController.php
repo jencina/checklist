@@ -335,7 +335,7 @@ class ChecklistController extends Controller
             $criteria->condition = "localidad_id =:cliente";
             $criteria->params    = array(':cliente'=>$id);
 
-        }else if($tipo == 'tecnico' ){
+        }else if($tipo == 'tecnico' || $tipo == 'reemplazo' ){
            
             $criteria            = new CDbCriteria;
             $criteria->condition = "usuario_id =:value and localidad_id =:cliente";

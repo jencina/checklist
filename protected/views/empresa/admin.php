@@ -32,6 +32,9 @@ switch(Yii::app()->user->tipo_usuario){
     case 'cliente':
         $template = '{ver}';
         break;
+    case 'reemplazo':
+        $template = '{ver}';
+        break;
 
 }
 

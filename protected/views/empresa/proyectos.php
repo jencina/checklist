@@ -28,6 +28,9 @@ switch(Yii::app()->user->tipo_usuario){
     case 'tecnico':
         $template = '{anadir} {view}';
         break;
+    case 'reemplazo':
+        $template = '{anadir} {view}';
+        break;
     case 'cliente':
         $template = '{anadir} {view}';
         break;

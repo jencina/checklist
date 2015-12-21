@@ -74,3 +74,8 @@ max-height: 200px;
     margin-top: -16px;
     width: 150px;
 }
+
+.drop_class a{
+   width: 100%;display: inline-block !important;
+
+}
