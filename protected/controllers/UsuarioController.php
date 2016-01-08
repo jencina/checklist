@@ -131,10 +131,16 @@ class UsuarioController extends Controller
 
                 if(isset($uploadedFile->name)){
                     $fileName    = "{$uploadedFile}";  // random number + file name
-                    $tecnico->contrato_adjunto = $fileName;
+
+                    if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName)){
+                        $ran=rand(1,9);
+                        $fileName =$ran.'_'.$fileName;
+                        $tecnico->contrato_adjunto = $fileName;
+                    }else{
+                        $tecnico->contrato_adjunto = $fileName;
+                    }
 
                 }
-
 
                 $valid=$model->validate();
                 $valid=$tecnico->validate() && $valid;
@@ -225,7 +231,14 @@ class UsuarioController extends Controller
 
                 if(isset($uploadedFile->name)){
                     $fileName    = "{$uploadedFile}";  // random number + file name
-                    $tecnico->contrato_adjunto = $fileName;
+
+                    if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName)){
+                        $ran=rand(1,9);
+                        $fileName =$ran.'_'.$fileName;
+                        $tecnico->contrato_adjunto = $fileName;
+                    }else{
+                        $tecnico->contrato_adjunto = $fileName;
+                    }
 
                 }
 
@@ -244,7 +257,8 @@ class UsuarioController extends Controller
 
                         if(!empty($tecnico->contrato_adjunto)):
                             $uploadedFile->saveAs(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName);
-                            if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato)){
+
+                            if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato) && !is_dir(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato))){
                                 unlink(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato);
                             }
 
