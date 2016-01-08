@@ -260,7 +260,9 @@ class UsuarioController extends Controller
                             $uploadedFile->saveAs(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName);
 
                             if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato) && !is_dir(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato))){
-                                unlink(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato);
+                                if($contrato != ''){
+									unlink(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato);
+								}
                             }
 
                         endif;
