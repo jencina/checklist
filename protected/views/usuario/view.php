@@ -41,3 +41,11 @@ $this->widget(
 );
 
  ?>
+
+<?php if(!empty($tecnico->contrato_adjunto)){?>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <?php echo $tecnico->contrato_adjunto.CHtml::link('Descargar',Yii::app()->request->baseUrl.'/images/usuarios/contratos/'.$tecnico->contrato_adjunto,array('target'=>'_blanc','class'=>'btn btn-primary','style'=>'width: 48%;'));; ?>
+        </div>
+    </div>
+<?php } ?>

@@ -55,25 +55,6 @@ class UsuarioController extends Controller
 
 
         if(count($tecnicos) > 0){
-            /*
-            $model=Email::model()->find();
-            Yii::import('application.extensions.phpmailer.JPhpMailer');
-            $mail = new JPhpMailer;
-            $mail->IsSMTP();
-            $mail->Host = $model->smtp;
-            $mail->Port = $model->puerto;
-            $mail->SMTPSecure = 'tls';
-            $mail->SMTPAuth = true;
-            $mail->Username = $model->email;
-            $mail->Password = $model->password;
-            $mail->SetFrom($model->email, $model->from);
-            $mail->Subject = $model->subject;
-            $mail->MsgHTML($this->renderPartial('email',array('tecnicos'=>$tecnicos),true));
-            $mail->AddAddress($model->address);
-
-
-            if($mail->Send()){
-            */
 
             $titulo     = 'Registro - Usuario';
 
@@ -104,6 +85,7 @@ class UsuarioController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+            'tecnico'=>UsuarioTecnico::model()->findByAttributes(array('usuario_id'=>$id))
 		));
 	}
 
@@ -143,14 +125,15 @@ class UsuarioController extends Controller
             }
 
             if(isset($_POST['UsuarioTecnico'])){
+                $tecnico->attributes=$_POST['UsuarioTecnico'];
 
-                $tecnico->attributes = $_POST['UsuarioTecnico'];
+                $uploadedFile= CUploadedFile::getInstance($tecnico,'contrato_adjunto');
 
-                if(!empty($tecnico->contrato_adjunto)):
-                    $uploadedFile= CUploadedFile::getInstance($tecnico,'contrato_adjunto');
+                if(isset($uploadedFile->name)){
                     $fileName    = "{$uploadedFile}";  // random number + file name
                     $tecnico->contrato_adjunto = $fileName;
-                endif;
+
+                }
 
 
                 $valid=$model->validate();
@@ -167,7 +150,7 @@ class UsuarioController extends Controller
                         $tecnico->insert();
 
                         if(!empty($tecnico->contrato_adjunto)):
-                            $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
+                            $uploadedFile->saveAs(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName);
                         endif;
 
                         if($model->tipoUsuario->nombre == 'tecnico' || $model->tipoUsuario->nombre == 'reemplazo'):
@@ -226,14 +209,26 @@ class UsuarioController extends Controller
 	{
 		$model   = $this->loadModel($id);
         $tecnico = UsuarioTecnico::model()->findByAttributes(array('usuario_id'=>$id));
+        $contrato = $tecnico->contrato_adjunto;
 
 		if(isset($_POST['Usuario']))
 		{
             $pass = $model->password;
 			$model->attributes=$_POST['Usuario'];
+
+
             if(isset($_POST['UsuarioTecnico'])){
 
-                $tecnico->attributes = $_POST['UsuarioTecnico'];
+                $tecnico->attributes=$_POST['UsuarioTecnico'];
+
+                $uploadedFile= CUploadedFile::getInstance($tecnico,'contrato_adjunto');
+
+                if(isset($uploadedFile->name)){
+                    $fileName    = "{$uploadedFile}";  // random number + file name
+                    $tecnico->contrato_adjunto = $fileName;
+
+                }
+
                 $valid=$model->validate();
                 $valid=$tecnico->validate() && $valid;
 
@@ -242,9 +237,18 @@ class UsuarioController extends Controller
                     if($pass != $model->password){
                         $model->password = $this->hashPass2($model->password);
                     }
+
                     if($model->update()){
 
                         $tecnico->update();
+
+                        if(!empty($tecnico->contrato_adjunto)):
+                            $uploadedFile->saveAs(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName);
+                            if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato)){
+                                unlink(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato);
+                            }
+
+                        endif;
 
                         $this->redirect(array('usuario/admin'));
                     }

@@ -52,18 +52,23 @@ class UsuarioTecnico extends CActiveRecord
 
     public function validFechaReq($attribute, $params){
 
-        if($this->tipoContrato->nombre != 'indefinido'){
-            if($this->fecha_termino == ''){
-                $this->addError($attribute, 'fecha de termino no puede ser nulo');
+        if(isset($this->tipoContrato->nombre)){
+            if($this->tipoContrato->nombre != 'indefinido'){
+                if($this->fecha_termino == ''){
+                    $this->addError($attribute, 'fecha de termino no puede ser nulo');
+                }
             }
+
         }
     }
 
     public function validFecha($attribute, $params){
 
-        if($this->tipoContrato->nombre != 'indefinido'){
-            if($this->fecha_inicio > $this->fecha_termino){
-                $this->addError($attribute, 'fecha de inicio no debe ser mayor a la de termino');
+        if(isset($this->tipoContrato->nombre)) {
+            if ($this->tipoContrato->nombre != 'indefinido') {
+                if ($this->fecha_inicio > $this->fecha_termino) {
+                    $this->addError($attribute, 'fecha de inicio no debe ser mayor a la de termino');
+                }
             }
         }
     }
