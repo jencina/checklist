@@ -26,7 +26,7 @@ $this->widget(
     array(
         'type' => 'striped',
         'dataProvider' => $model,
-		'filter'=>$model->search(),
+		//'filter'=>$model,
         'template' => "{items} {pager}",
         'columns'=>array(
             'id',
