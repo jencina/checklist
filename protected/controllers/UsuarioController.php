@@ -131,9 +131,9 @@ class UsuarioController extends Controller
 
                 if(isset($uploadedFile->name)){
                     $fileName    = "{$uploadedFile}";  // random number + file name
-
+					$fileName    = str_replace(" ","_",$fileName);
                     if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName)){
-                        $ran=rand(1,9);
+                        $ran=rand(100,999);
                         $fileName =$ran.'_'.$fileName;
                         $tecnico->contrato_adjunto = $fileName;
                     }else{
@@ -234,7 +234,7 @@ class UsuarioController extends Controller
                     $fileName    = str_replace(" ","_",$fileName);
 					
                     if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName)){
-                        $ran=rand(1,9);
+                        $ran=rand(100,999);
                         $fileName =$ran.'_'.$fileName;
                         $tecnico->contrato_adjunto = $fileName;
                     }else{
