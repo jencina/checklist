@@ -87,9 +87,9 @@ class UsuarioTecnico extends CActiveRecord
         if(!$r = substr($r, 0, -1))
             $this->addError($attribute, 'error');
 
-        if(!((int)$r > 0))
+        if(!((int)$r > 0)) {
             $this->addError($attribute, 'nonumerico'); /* No es un valor numérico */
-
+        }else{
         $x = 2; $s = 0;
         for($i = (strlen($r) - 1); $i >= 0; $i--){
             if($x > 7)
@@ -108,6 +108,7 @@ class UsuarioTecnico extends CActiveRecord
             $this->rut = number_format($r, 0, '', '.').'-'.$v; /* Formatea el RUT */
             $this->addError($attribute, 'error');
 
+        }
         }
 
     }
