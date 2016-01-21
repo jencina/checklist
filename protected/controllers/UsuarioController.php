@@ -215,7 +215,7 @@ class UsuarioController extends Controller
 	{
 		$model   = $this->loadModel($id);
         $tecnico = UsuarioTecnico::model()->findByAttributes(array('usuario_id'=>$id));
-        
+
         if($tecnico){
             $contrato = $tecnico->contrato_adjunto;
         }
