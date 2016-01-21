@@ -215,7 +215,10 @@ class UsuarioController extends Controller
 	{
 		$model   = $this->loadModel($id);
         $tecnico = UsuarioTecnico::model()->findByAttributes(array('usuario_id'=>$id));
-        $contrato = $tecnico->contrato_adjunto;
+        
+        if($tecnico){
+            $contrato = $tecnico->contrato_adjunto;
+        }
 
 		if(isset($_POST['Usuario']))
 		{
@@ -241,7 +244,11 @@ class UsuarioController extends Controller
                         $tecnico->contrato_adjunto = $fileName;
                     }
 
+                }else{
+                    $tecnico->contrato_adjunto = $contrato;
+
                 }
+
 
                 $valid=$model->validate();
                 $valid=$tecnico->validate() && $valid;
@@ -256,7 +263,8 @@ class UsuarioController extends Controller
 
                         $tecnico->update();
 
-                        if(!empty($tecnico->contrato_adjunto)):
+                        if(isset($uploadedFile->name)):
+
                             $uploadedFile->saveAs(Yii::app()->basePath.'/../images/usuarios/contratos/'.$fileName);
 
                             if(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato) && !is_dir(file_exists(Yii::app()->basePath.'/../images/usuarios/contratos/'.$contrato))){
