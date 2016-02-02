@@ -1,3 +1,14 @@
+<?php
+/* @var $this ClienteController */
+/* @var $model Proyecto */
+$this->widget(
+    'booster.widgets.TbBreadcrumbs',
+    array(
+        'homeLink' => CHtml::link(Yii::t('zii', 'Empresa'), array('empresa/admin')),
+        'links'    => array('Proyectos'=> array('empresa/proyectos','id'=>$id),'editar'),
+    )
+);
+?>
 
     <div class="page-header">
         <h1>Proyecto <small>editar</small></h1>
