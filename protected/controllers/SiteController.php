@@ -49,7 +49,7 @@ class SiteController extends Controller
 	{
 		if($error=Yii::app()->errorHandler->error)
 		{
-print_r($error);
+            print_r($error);
             exit;
 
 			if(Yii::app()->request->isAjaxRequest)
