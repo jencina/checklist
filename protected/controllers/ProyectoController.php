@@ -457,11 +457,16 @@ class ProyectoController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
+        $id = Yii::app()->request->getParam('id');
+
 		$model=$this->loadModel($id);
 
-        $model->empresa_id = $id;
+        print_r($model);
+        exit;
+
+
         $this->menu_activo = 'empresa';
 
        /* $this->breadcrumbs =array(
@@ -473,7 +478,8 @@ class ProyectoController extends Controller
         {
             $model->attributes=$_POST['Proyecto'];
 
-            //$model->empresa_id = $id;
+            $model->empresa_id = $id;
+
             $error = false;
             if(isset($_POST['interno'])){
 
