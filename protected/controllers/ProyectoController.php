@@ -472,6 +472,8 @@ class ProyectoController extends Controller
         if(isset($_POST['Proyecto']))
         {
             $model->attributes=$_POST['Proyecto'];
+
+            //$model->empresa_id = $id;
             $error = false;
             if(isset($_POST['interno'])){
 
