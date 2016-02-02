@@ -5,7 +5,7 @@ $this->widget(
     'booster.widgets.TbBreadcrumbs',
     array(
         'homeLink' => CHtml::link(Yii::t('zii', 'Empresa'), array('empresa/admin')),
-        'links'    => array('Proyectos'=> array('empresa/proyectos','id'=>$id),'editar'),
+        'links'    => array('Proyectos'=> array('empresa/proyectos','id'=>$model->empresa_id),'editar'),
     )
 );
 ?>
