@@ -466,7 +466,6 @@ class ProyectoController extends Controller
         print_r($model);
         exit;
 
-
         $this->menu_activo = 'empresa';
 
        /* $this->breadcrumbs =array(
