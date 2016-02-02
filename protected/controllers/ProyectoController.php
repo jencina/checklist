@@ -461,6 +461,14 @@ class ProyectoController extends Controller
 	{
 		$model=$this->loadModel($id);
 
+        $model->empresa_id = $id;
+        $this->menu_activo = 'empresa';
+
+        $this->breadcrumbs =array(
+            'homeLink' => CHtml::link(Yii::t('zii', 'Empresa'), array('empresa/admin')),
+            'links'    => array('Proyectos'=> array('empresa/proyectos','id'=>$id),'editar'),
+        );
+
         if(isset($_POST['Proyecto']))
         {
             $model->attributes=$_POST['Proyecto'];
@@ -678,7 +686,7 @@ class ProyectoController extends Controller
 
         }
 
-        $this->render('create',array(
+        $this->render('update',array(
             'model'       => $model,
             'localidades' => $localidades,
             'internos'    => $internos,
