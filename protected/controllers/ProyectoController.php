@@ -695,7 +695,7 @@ class ProyectoController extends Controller
             'listUsuarios'=> $this->listUsuarios(),
             'listTareas'  => $this->listTareas(),
             'tareas'      => $tareas,
-            'id'          => $id,
+            'id'          => '',
             'configuracion'=>$conf
         ));
 	}
