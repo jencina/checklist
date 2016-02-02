@@ -73,7 +73,7 @@ $form = $this->beginWidget(
                         'class' => 'col-sm-5',
                     ),
                     'widgetOptions' => array(
-                        'htmlOptions' => array('value'=>$model->empresa->nombre,'disabled' => true)
+                        'htmlOptions' => array('value'=>(isset($model->empresa->nombre))?$model->empresa->nombre:'','disabled' => true)
                     )
                 )
             );

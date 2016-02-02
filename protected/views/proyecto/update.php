@@ -23,6 +23,6 @@ $this->widget(
     'listUsuarios'=>$listUsuarios,
     'tareas'=>$tareas,
     'listTareas'=>$listTareas,
-    'id'=>'',
+    'id'=>$id,
     'configuracion'=>$configuracion
 )); ?>
