@@ -463,7 +463,7 @@ class ProyectoController extends Controller
 
 		$model=$this->loadModel($id);
 
-        print_r($model);
+        print_r($model->empresa->nombre);
         exit;
 
         $this->menu_activo = 'empresa';
