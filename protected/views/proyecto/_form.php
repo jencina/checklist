@@ -64,8 +64,8 @@ $form = $this->beginWidget(
 
         <?php
 
-        if(isset($id)){
-            echo $form->textFieldGroup(
+        if(!empty($model->empresa_id)){ ?>
+          <!--  echo $form->textFieldGroup(
                 $model,
                 'empresa_id',
                 array(
@@ -76,8 +76,16 @@ $form = $this->beginWidget(
                         'htmlOptions' => array('value'=>(isset($model->empresa->nombre))?$model->empresa->nombre:'','disabled' => true)
                     )
                 )
-            );
-        }else{
+            ); -->
+
+            <div class="form-group">
+                <label class="control-label required" for="Proyecto_empresa_id">
+                    Empresa
+                    <span class="required">*</span>
+                </label>
+                <input id="empresa" class="form-control" type="text" name="empresa" placeholder="Empresa" disabled="disabled" value="<?=(isset($model->empresa->nombre))?$model->empresa->nombre:''?>">
+            </div>
+        <?PHP }else{
             echo $form->dropDownListGroup(
                 $model,
                 'empresa_id',

@@ -464,12 +464,10 @@ class ProyectoController extends Controller
 		$model=$this->loadModel($id);
 
         $this->menu_activo = 'empresa';
-        
+
         if(isset($_POST['Proyecto']))
         {
             $model->attributes=$_POST['Proyecto'];
-
-            $model->empresa_id = $id;
 
             $error = false;
             if(isset($_POST['interno'])){
