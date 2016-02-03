@@ -567,12 +567,15 @@ class ProyectoController extends Controller
                 if($model->update()) {
 
                     $conf = Configuracion::model()->findByAttributes(array('proyecto_id'=>$model->id));
-                    $conf->unidades_red      = (isset($_POST['Configuracion']['unidades_red']))?$_POST['Configuracion']['unidades_red']:0;
-                    $conf->foto              = (isset($_POST['Configuracion']['foto']))?$_POST['Configuracion']['foto']:0;
-                    $conf->configuracion_red = (isset($_POST['Configuracion']['configuracion_red']))?$_POST['Configuracion']['configuracion_red']:0;
-                    $conf->migracion         = (isset($_POST['Configuracion']['migracion']))?$_POST['Configuracion']['migracion']:0;
-                    $conf->proyecto_id       = $model->id;
-                    $conf->update();
+                    if(isset($conf)){
+                        $conf->unidades_red      = (isset($_POST['Configuracion']['unidades_red']))?$_POST['Configuracion']['unidades_red']:0;
+                        $conf->foto              = (isset($_POST['Configuracion']['foto']))?$_POST['Configuracion']['foto']:0;
+                        $conf->configuracion_red = (isset($_POST['Configuracion']['configuracion_red']))?$_POST['Configuracion']['configuracion_red']:0;
+                        $conf->migracion         = (isset($_POST['Configuracion']['migracion']))?$_POST['Configuracion']['migracion']:0;
+                        $conf->proyecto_id       = $model->id;
+                        $conf->update();
+                    }
+
 
                     $ids = array();
                     foreach($internos as $interno){
