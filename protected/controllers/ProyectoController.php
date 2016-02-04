@@ -465,6 +465,22 @@ class ProyectoController extends Controller
 
         $this->menu_activo = 'empresa';
 
+        $local    = new Localidad();
+        $int      = new JefeProyecto();
+        $ext      = new JefeProyecto();
+        $user     = new UsuarioAutoComplete();
+        $tar      = new TareaAutoComplete();
+        $conf     = new Configuracion();
+
+        $internos = array();
+        $externos = array();
+
+        $internos[0]    = $int;
+        $externos[0]    = $ext;
+        $localidades[0] = $local;
+        $usuarios[0]    = $user;
+        $tareas[0]      = $tar;
+
         if(isset($_POST['Proyecto']))
         {
             $model->attributes=$_POST['Proyecto'];

@@ -83,7 +83,7 @@ $form = $this->beginWidget(
                     Empresa
                     <span class="required">*</span>
                 </label>
-                <input id="empresa" class="form-control" type="text" name="empresa" placeholder="Empresa" disabled="disabled" value="<?=(isset($model->empresa->nombre))?$model->empresa->nombre:''?>">
+                <input id="empresa" class="form-control" type="text" name="empresa" placeholder="Empresa" disabled="disabled" value="<?php echo (isset($model->empresa->nombre))?$model->empresa->nombre:''?>">
             </div>
         <?PHP }else{
             echo $form->dropDownListGroup(
@@ -265,7 +265,7 @@ $form = $this->beginWidget(
             'booster.widgets.TbButton',
             array(
                 'buttonType' => 'submit',
-                'context' => 'primary',
+                'type' => 'primary',
                 'label' => 'Guardar'
             )
         ); ?>

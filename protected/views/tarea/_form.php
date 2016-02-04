@@ -98,7 +98,7 @@
             'booster.widgets.TbButton',
             array(
                 'buttonType' => 'submit',
-                'context' => 'primary',
+                'type' => 'primary',
                 'label' => 'Guardar'
             )
         ); ?>
