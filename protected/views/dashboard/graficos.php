@@ -181,13 +181,3 @@ $barra = $barras[$index];?>
 
 
 
-
-
-<?php foreach ($tortas as $index=>$torta) { ?>
-
-
-
-
-
-
-<?php } ?>

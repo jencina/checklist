@@ -5,7 +5,7 @@
 
 <?php $baseUrl = Yii::app()->baseUrl;
 $cs = Yii::app()->getClientScript();
-$cs->registerScriptFile($baseUrl.'/protected/extensions/booster/assets/highcharts/highcharts.js');?>
+$cs->registerScriptFile($baseUrl.'/js/highcharts.js');?>
 
 <div class="page-header">
     <h1>Dashboards</h1>
@@ -275,41 +275,6 @@ $cs->registerScriptFile($baseUrl.'/protected/extensions/booster/assets/highchart
 
             }
         });
-
-
-        /*$('.empresa input').click(function(){
-
-            var id = $(this).val();
-
-            var $box = $(this);
-            if ($box.is(":checked")) {
-
-                var group = ".empresa input:checkbox";
-
-                $(group).prop("checked", false);
-
-                $box.prop("checked", true);
-
-                $.ajax({
-                    url  : "<?php echo Yii::app()->createURL('dashboard/setProyectos');?>",
-                    type : 'post',
-                    cache: false ,
-                    data : {id:id},
-                    befereSend: function(){
-                        $('#proyecto').html('cargando...');
-                    },
-                    success: function(data){
-                        $('#proyecto').html(data.div);
-                    }
-                });
-
-            } else {
-                $box.prop("checked", false);
-            }
-        });
-        */
-
-
     });
 
 </script>

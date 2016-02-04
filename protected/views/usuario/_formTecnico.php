@@ -46,7 +46,7 @@ $form = $this->beginWidget(
     </div>
 
     <?php
-     if($tipoUsuario != 'residente'): ?>
+     if($tipoUsuario == 'admin'  || $tipoUsuario == 'super_admin'|| $tipoUsuario == 'tecnico'|| $tipoUsuario == 'cliente'): ?>
         <div class="col-md-12">
 
             <div class="col-md-6">
@@ -159,7 +159,7 @@ $form = $this->beginWidget(
     <?php } ?>
 
     <div id="user-tecnico">
-        <?php if($tipoUsuario == 'tecnico' || $tipoUsuario == 'reemplazo' || $tipoUsuario == 'residente'){ ?>
+        <?php if($tipoUsuario == 'tecnico' || $tipoUsuario == 'reemplazo' || $tipoUsuario == 'residente'|| $tipoUsuario != 'finiquitado' || $tipoUsuario != 'renuncia_voluntaria' || $tipoUsuario != 'desvinculado' || $tipoUsuario != 'reubicado'){ ?>
 
         <div class="col-md-12">
 

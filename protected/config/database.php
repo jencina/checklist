@@ -8,6 +8,6 @@ return array(
 	'connectionString' => 'mysql:host=localhost;dbname=checklist',
 	'emulatePrepare' => true,
 	'username' => 'root',
-	'password' => 'jonathan19',
+	'password' => '',
 	'charset' => 'utf8',
 );

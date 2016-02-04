@@ -55,8 +55,10 @@ class Usuario extends CActiveRecord
 
     public function validUser($attribute, $params){
 
+        $tipoUsuario = $this->tipoUsuario->nombre;
 
-        if($this->tipoUsuario->nombre != 'residente'){
+
+        if( $tipoUsuario == 'admin'  || $tipoUsuario == 'super_admin'|| $tipoUsuario == 'tecnico'|| $tipoUsuario == 'cliente'){
             if(empty($this->$attribute)){
                 $this->addError($attribute, $attribute.' no puede ser nulo');
             }
